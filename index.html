@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chitato Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;900&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="icon" src="Logo CHT.png" type="image/png">
+  <link rel="shortcut icon" src="Logo CHT.png" type="image/png">
+<style>
+  :root {
+    --orange: #FF6B00;
+    --orange-light: #FF8C2A;
+    --orange-pale: #FFF0E5;
+    --white: #FFFFFF;
+    --off-white: #FAFAF8;
+    --dark: #1A1A1A;
+    --gray: #888888;
+    --gray-light: #F2F2F0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--off-white);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,107,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 70px;
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 30px rgba(255,107,0,0.1); }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .logo-placeholder {
+    width: 42px; height: 42px;
+    background: var(--orange);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: white;
+    letter-spacing: 1px;
+  }
+
+  .logo-img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: transparent;
+}
+
+  .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 3px;
+    color: var(--dark);
+  }
+  .logo-text span { color: var(--orange); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dark);
+    position: relative;
+    transition: color 0.3s;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 2px;
+    background: var(--orange);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cart {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--orange);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .nav-cart:hover { background: var(--orange-light); transform: scale(1.04); }
+
+  /* ─── HERO ─── */
+  .hero {
+    margin-top: 70px;
+    min-height: calc(100vh - 70px);
+    background: linear-gradient(135deg, var(--white) 0%, var(--orange-pale) 100%);
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: 'CHITATO';
+    position: absolute;
+    right: -2%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(100px, 18vw, 280px);
+    color: rgba(255,107,0,0.06);
+    letter-spacing: 10px;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .hero-content { max-width: 600px; z-index: 2; }
+  .hero-tag {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(60px, 9vw, 120px);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+  .hero h1 span { color: var(--orange); }
+  .hero p {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 40px;
+    max-width: 420px;
+  }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--orange);
+    color: white;
+    padding: 16px 36px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    text-transform: uppercase;
+  }
+  .btn-primary:hover { background: var(--dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,0.3); }
+  .btn-outline {
+    background: transparent;
+    color: var(--dark);
+    padding: 16px 36px;
+    border: 2px solid var(--dark);
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    text-transform: uppercase;
+  }
+  .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+  /* ─── MARQUEE ─── */
+  .marquee-wrap {
+    background: var(--orange);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-flex;
+    animation: marquee 20s linear infinite;
+  }
+  .marquee-track span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 4px;
+    color: white;
+    padding: 0 32px;
+  }
+  .marquee-track span.dot { color: rgba(255,255,255,0.4); padding: 0 8px; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ─── SECTION HEADER ─── */
+  .section-header {
+    text-align: center;
+    padding: 80px 5% 50px;
+  }
+  .section-header .tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .section-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    letter-spacing: 3px;
+    line-height: 1;
+  }
+  .section-header p {
+    margin-top: 16px;
+    color: var(--gray);
+    font-size: 14px;
+    font-weight: 300;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+  }
+
+  /* ─── CATEGORY TABS ─── */
+  .category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 0 5% 50px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    padding: 12px 28px;
+    border-radius: 50px;
+    border: 2px solid #E0E0E0;
+    background: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: var(--gray);
+  }
+  .tab-btn:hover, .tab-btn.active {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255,107,0,0.25);
+  }
+
+  /* ─── PRODUCT GRID ─── */
+  .products-section { padding: 0 5% 100px; }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px;
+  }
+  .product-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(.25,.8,.25,1), box-shadow 0.35s;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(255,107,0,0.15);
+  }
+  .product-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--gray-light);
+    position: relative;
+    overflow: hidden;
+  }
+  .product-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .product-card:hover .product-img img { transform: scale(1.07); }
+
+  .product-img-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #f5f5f3, #ececea);
+    gap: 12px;
+  }
+  .product-img-placeholder .icon {
+    font-size: 48px;
+    opacity: 0.25;
+  }
+  .product-img-placeholder span {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #aaa;
+    text-transform: uppercase;
+  }
+
+  .product-badge {
+    position: absolute;
+    top: 14px; left: 14px;
+    background: var(--orange);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+  .product-badge.new { background: var(--dark); }
+
+  .product-info { padding: 20px 22px 22px; }
+  .product-category {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .product-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  .product-price {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--orange);
+  }
+  .product-price .old {
+    font-size: 13px;
+    font-weight: 400;
+    color: #bbb;
+    text-decoration: line-through;
+    margin-left: 8px;
+  }
+  .product-sizes {
+    display: flex;
+    gap: 6px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .size-pill {
+    padding: 3px 10px;
+    border: 1px solid #E0E0E0;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gray);
+  }
+
+  /* ─── EMPTY STATE ─── */
+  .empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--gray);
+  }
+  .empty-state .empty-icon { font-size: 56px; margin-bottom: 16px; opacity: 0.3; }
+  .empty-state p { font-size: 14px; font-weight: 500; letter-spacing: 1px; }
+
+  /* ─── POPUP ─── */
+  .popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.25s ease;
+  }
+  .popup-overlay.open { display: flex; }
+  @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
+
+  .popup {
+    background: white;
+    border-radius: 24px;
+    max-width: 860px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    animation: slideUp 0.3s cubic-bezier(.25,.8,.25,1);
+    scrollbar-width: none;
+  }
+  .popup::-webkit-scrollbar { display: none; }
+  @keyframes slideUp { from { transform: translateY(30px); opacity:0; } to { transform: translateY(0); opacity:1; } }
+
+  .popup-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 32px; height: 32px;
+    background: var(--dark);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10;
+    transition: background 0.2s, transform 0.2s;
+    line-height: 1;
+  }
+  .popup-close:hover { background: var(--orange); transform: rotate(90deg); }
+
+  /* ─── IMAGE ZOOM ─── */
+  .popup-img-wrap {
+    position: relative;
+    overflow: hidden;
+    background: var(--gray-light);
+    border-radius: 24px 0 0 24px;
+    min-height: 420px;
+    cursor: zoom-in;
+  }
+  .popup-img-wrap.zoomed { cursor: zoom-out; }
+  .popup-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    transform-origin: var(--ox, 50%) var(--oy, 50%);
+    pointer-events: none;
+    display: block;
+  }
+  .popup-img-placeholder {
+    width: 100%; height: 100%;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background: linear-gradient(145deg, #f5f5f3, #ececea);
+  }
+  .popup-img-placeholder .icon { font-size: 72px; opacity: 0.2; }
+  .popup-img-placeholder span { font-size: 12px; font-weight: 600; letter-spacing: 2px; color: #bbb; text-transform: uppercase; }
+  .zoom-hint {
+    position: absolute;
+    bottom: 14px; right: 14px;
+    background: rgba(0,0,0,0.55);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+
+  .popup-info {
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+  }
+  .popup-cat {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--orange);
+    text-transform: uppercase;
+  }
+  .popup-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    letter-spacing: 2px;
+    line-height: 1.1;
+  }
+  .popup-price {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--orange);
+  }
+  .popup-price .old {
+    font-size: 16px;
+    font-weight: 400;
+    color: #bbb;
+    text-decoration: line-through;
+    margin-left: 10px;
+  }
+  .popup-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: #555;
+    border-top: 1px solid #F0F0EE;
+    padding-top: 18px;
+  }
+  .popup-sizes-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: var(--dark);
+  }
+  .popup-sizes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .popup-size-btn {
+    width: 44px; height: 44px;
+    border: 2px solid #E0E0E0;
+    border-radius: 10px;
+    background: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--dark);
+  }
+  .popup-size-btn:hover, .popup-size-btn.selected {
+    border-color: var(--orange);
+    background: var(--orange);
+    color: white;
+  }
+  .popup-add-btn {
+    background: var(--orange);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .popup-add-btn:hover { background: var(--dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,0.3); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--dark);
+    color: white;
+    padding: 60px 5% 30px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand .logo-text { color: white; font-size: 30px; margin-bottom: 14px; display: block; }
+  .footer-brand p { font-size: 13px; font-weight: 300; line-height: 1.9; color: rgba(255,255,255,0.5); max-width: 280px; }
+  .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 13px; transition: color 0.3s; }
+  .footer-col ul li a:hover { color: var(--orange); }
+  .footer-bottom { padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: gap; }
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  /* ─── MOBILE ─── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: all 0.3s; display: block; }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 70px; left: 0; right: 0;
+      background: white;
+      padding: 20px 5%;
+      border-bottom: 1px solid #eee;
+      z-index: 99;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); text-decoration: none; }
+
+    .popup { grid-template-columns: 1fr; }
+    .popup-img-wrap { border-radius: 24px 24px 0 0; min-height: 280px; }
+    .popup-info { padding: 28px 24px; }
+    .footer-top { grid-template-columns: 1fr; gap: 28px; }
+    .hero h1 { font-size: clamp(50px, 13vw, 90px); }
+  }
+
+  @media (max-width: 600px) {
+    .products-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .product-info { padding: 14px 16px 16px; }
+    .product-name { font-size: 14px; }
+    .product-price { font-size: 15px; }
+  }
+
+  .product-card[data-cat].hidden { display: none; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+  <img src="Logo CHT.png" alt="Logo" class="logo-img">
+    <span class="logo-text">CHIT<span>A</span>TO</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#outerwear">Outerwear</a></li>
+    <li><a href="#tshirt">T-Shirt</a></li>
+    <li><a href="#sweatpants">Sweat Pants</a></li>
+  </ul>
+  <button class="nav-cart">🛒 Cart</button>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#shop">Shop</a>
+  <a href="#outerwear">Outerwear</a>
+  <a href="#tshirt">T-Shirt</a>
+  <a href="#sweatpants">Sweat Pants</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-tag">✦ Limited Collection </span>
+    <h1>WEAR<br><span>YOUR</span><br>STYLE</h1>
+    <p>Fashion yang berbicara lebih dari sekedar pakaian. Temukan koleksi terbaru di CHITATO — Bold, Modern, Limited dan selalu on-trend.</p>
+    <div class="hero-btns">
+      <a href="#shop" class="btn-primary">Shop Now</a>
+      <a href="#shop" class="btn-outline">Lihat Koleksi</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>CHITATO FASHION</span><span class="dot">✦</span>
+    <span>NEW ARRIVALS</span><span class="dot">✦</span>
+    <span>OUTERWEAR</span><span class="dot">✦</span>
+    <span>T-SHIRT</span><span class="dot">✦</span>
+    <span>SWEAT PANTS</span><span class="dot">✦</span>
+    <span>Limited Edition</span><span class="dot">✦</span>
+    <span>CHITATO FASHION</span><span class="dot">✦</span>
+    <span>NEW ARRIVALS</span><span class="dot">✦</span>
+    <span>OUTERWEAR</span><span class="dot">✦</span>
+    <span>T-SHIRT</span><span class="dot">✦</span>
+    <span>SWEAT PANTS</span><span class="dot">✦</span>
+    <span>Limited Edition</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- SHOP SECTION -->
+<section id="shop">
+  <div class="section-header">
+    <span class="tag">✦ Koleksi Kami</span>
+    <h2>SHOP THE LOOK</h2>
+    <p>Dari outerwear stylish hingga sweatpants santai — semua ada di sini dengan kualitas premium.</p>
+  </div>
+
+  <div class="category-tabs">
+    <button class="tab-btn active" data-filter="all">All</button>
+    <button class="tab-btn" data-filter="outerwear">Outerwear</button>
+    <button class="tab-btn" data-filter="tshirt">T-Shirt</button>
+    <button class="tab-btn" data-filter="sweatpants">Sweat Pants</button>
+  </div>
+
+  <div class="products-section">
+    <div class="products-grid" id="productsGrid">
+      <div class="empty-state">
+        <div class="empty-icon">🛍️</div>
+        <p>Memuat produk...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo-text">CHIT<span style="color:var(--orange)">A</span>TO</span>
+      <p>Fashion yang berbicara lebih dari sekedar pakaian. Temukan koleksi terbaru di CHITATO — Bold, Modern, Limited dan selalu on-trend.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">Outerwear</a></li>
+        <li><a href="#">T-Shirt</a></li>
+        <li><a href="#">Sweat Pants</a></li>
+        <li><a href="#">New Arrivals</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#">Tentang Kami</a></li>
+        <li><a href="#">Cara Order</a></li>
+        <li><a href="#">Kebijakan Return</a></li>
+        <li><a href="#">Kontak</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 CHITATO. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- POPUP -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup" id="popup">
+    <button class="popup-close" id="popupClose">✕</button>
+    <div class="popup-img-wrap" id="popupImgWrap">
+      <div class="popup-img-placeholder" id="popupImgPlaceholder">
+        <span class="icon" id="popupIcon">👕</span>
+        <span id="popupImgLabel">Product</span>
+      </div>
+      <span class="zoom-hint" id="zoomHint">🔍 Hover to zoom</span>
+    </div>
+    <div class="popup-info">
+      <div class="popup-cat" id="popupCat">Category</div>
+      <div class="popup-name" id="popupName">Product Name</div>
+      <div class="popup-price" id="popupPrice">Rp 0</div>
+      <div class="popup-desc" id="popupDesc">Deskripsi produk akan muncul di sini.</div>
+      <div>
+        <div class="popup-sizes-title">Pilih Ukuran</div>
+        <div class="popup-sizes" id="popupSizes"></div>
+      </div>
+      <button class="popup-add-btn" id="popupAddBtn">🛒 Tambah ke Keranjang</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FIREBASE + SCRIPT ─── -->
+<script type="module">
+import { initializeApp }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, getDocs, onSnapshot }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+// ── CONFIG (sama persis dengan admin) ──
+const firebaseConfig = {
+  apiKey: "AIzaSyB-fPBreIXMWsW4c_3Az9E83x3Kgz-SVSc",
+  authDomain: "chitato-store.firebaseapp.com",
+  projectId: "chitato-store",
+  storageBucket: "chitato-store.firebasestorage.app",
+  messagingSenderId: "698109574063",
+  appId: "1:698109574063:web:a7537795e44b9e32f04d5a",
+  measurementId: "G-LT10VQ1K3G"
+};
+
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
+// ── HELPER: format harga ──
+function formatRupiah(number) {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency", currency: "IDR", maximumFractionDigits: 0
+  }).format(number);
+}
+
+// ── STATE ──
+let products     = {};   // { docId: {...fields} }
+let activeFilter = 'all';
+let currentPopupId = null;
+
+// ── RENDER GRID ──
+function renderProducts(filter) {
+  activeFilter = filter;
+  const grid = document.getElementById('productsGrid');
+
+  const filtered = Object.entries(products).filter(([, p]) =>
+    filter === 'all' ||
+    (p.cat || '').toLowerCase().replace(/\s+/g, '') === filter
+  );
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="empty-state"><div class="empty-icon">🛍️</div><p>Produk akan segera hadir</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(([id, p]) => `
+    <div class="product-card" data-cat="${(p.cat||'').toLowerCase().replace(/\s+/g,'')}" data-id="${id}">
+      <div class="product-img">
+        ${p.image
+          ? `<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'product-img-placeholder\\'><span class=\\'icon\\'>${p.icon||'👕'}</span><span>${p.cat||''}</span></div>'">`
+          : `<div class="product-img-placeholder"><span class="icon">${p.icon||'👕'}</span><span>${p.cat||''}</span></div>`
+        }
+        ${p.badge ? `<span class="product-badge ${p.badge==='New'?'new':''}">${p.badge}</span>` : ''}
+      </div>
+      <div class="product-info">
+        <div class="product-category">${p.cat||''}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-price">
+          ${typeof p.price === 'number' ? formatRupiah(p.price) : p.price}
+          ${p.oldPrice ? `<span class="old">${typeof p.oldPrice==='number'?formatRupiah(p.oldPrice):p.oldPrice}</span>` : ''}
+        </div>
+        <div class="product-sizes">
+          ${(p.sizes||[]).map(s=>`<span class="size-pill">${s}</span>`).join('')}
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', () => openPopup(card.dataset.id));
+  });
+}
+
+// ── REALTIME LISTENER (auto-sync saat admin ubah data) ──
+onSnapshot(collection(db, 'products'), (snapshot) => {
+  products = {};
+  snapshot.forEach(docItem => {
+    products[docItem.id] = docItem.data();
+  });
+  renderProducts(activeFilter);
+}, (err) => {
+  console.error('Firebase error:', err);
+  document.getElementById('productsGrid').innerHTML =
+    `<div class="empty-state"><div class="empty-icon">⚠️</div><p>Gagal memuat produk</p></div>`;
+});
+
+// ── NAVBAR SCROLL ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ── HAMBURGER ──
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+document.querySelectorAll('#mobileMenu a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+});
+
+// ── CATEGORY FILTER ──
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProducts(btn.dataset.filter);
+  });
+});
+
+// ── POPUP OPEN ──
+function openPopup(id) {
+  const p = products[id];
+  if (!p) return;
+  currentPopupId = id;
+
+  document.getElementById('popupCat').textContent  = p.cat || '';
+  document.getElementById('popupName').textContent = p.name;
+  document.getElementById('popupDesc').textContent = p.desc || '-';
+
+  const priceStr = typeof p.price === 'number' ? formatRupiah(p.price) : p.price;
+  const oldStr   = p.oldPrice ? `<span class="old">${typeof p.oldPrice==='number'?formatRupiah(p.oldPrice):p.oldPrice}</span>` : '';
+  document.getElementById('popupPrice').innerHTML = priceStr + oldStr;
+
+  // Sizes
+  const sizesEl = document.getElementById('popupSizes');
+  sizesEl.innerHTML = (p.sizes||[]).map(s => `<button class="popup-size-btn">${s}</button>`).join('');
+  sizesEl.querySelectorAll('.popup-size-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      sizesEl.querySelectorAll('.popup-size-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    });
+  });
+
+  // Image
+  const imgWrap   = document.getElementById('popupImgWrap');
+  imgWrap.classList.remove('zoomed');
+  const placeholder = document.getElementById('popupImgPlaceholder');
+  if (p.image) {
+    placeholder.innerHTML = `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<span class=\\'icon\\'>${p.icon||'👕'}</span><span>${p.cat||''}</span>'">`;
+  } else {
+    placeholder.innerHTML = `<span class="icon">${p.icon||'👕'}</span><span>${p.cat||''}</span>`;
+  }
+
+  // Add to cart → WA
+  document.getElementById('popupAddBtn').onclick = () => {
+    const selectedSize = sizesEl.querySelector('.popup-size-btn.selected');
+    const sizeText = selectedSize ? ` (Ukuran: ${selectedSize.textContent})` : '';
+    const phone   = "94764729543";
+    const message = `Halo CHITATO STORE, saya ingin membeli ${p.name}${sizeText} seharga ${priceStr}`;
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
+  document.getElementById('popupOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// ── POPUP CLOSE ──
+function closePopup() {
+  document.getElementById('popupOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  currentPopupId = null;
+}
+document.getElementById('popupClose').addEventListener('click', closePopup);
+document.getElementById('popupOverlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('popupOverlay')) closePopup();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+// ── ZOOM ON HOVER (Desktop) ──
+const imgWrap = document.getElementById('popupImgWrap');
+let isZoomed  = false;
+
+imgWrap.addEventListener('mouseenter', () => {
+  isZoomed = true;
+  imgWrap.classList.add('zoomed');
+  document.getElementById('zoomHint').style.opacity = '0';
+});
+imgWrap.addEventListener('mouseleave', () => {
+  isZoomed = false;
+  imgWrap.classList.remove('zoomed');
+  document.getElementById('zoomHint').style.opacity = '1';
+  const ph = imgWrap.querySelector('#popupImgPlaceholder');
+  if (ph) ph.style.transform = 'scale(1)';
+});
+imgWrap.addEventListener('mousemove', (e) => {
+  if (!isZoomed) return;
+  const rect = imgWrap.getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top)  / rect.height) * 100;
+  const ph = imgWrap.querySelector('#popupImgPlaceholder');
+  if (ph) {
+    ph.style.transformOrigin = `${x}% ${y}%`;
+    ph.style.transform       = 'scale(2)';
+    ph.style.transition      = 'transform 0.1s ease';
+  }
+});
+
+// ── PINCH ZOOM (Mobile) ──
+let initialDistance = 0;
+let currentScale    = 1;
+
+imgWrap.addEventListener('touchstart', (e) => {
+  if (e.touches.length === 2) {
+    initialDistance = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX,
+      e.touches[0].clientY - e.touches[1].clientY
+    );
+  }
+}, { passive: true });
+
+imgWrap.addEventListener('touchmove', (e) => {
+  if (e.touches.length === 2) {
+    e.preventDefault();
+    const dist  = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX,
+      e.touches[0].clientY - e.touches[1].clientY
+    );
+    const scale = Math.min(Math.max((dist / initialDistance) * currentScale, 1), 3);
+    const ph    = imgWrap.querySelector('#popupImgPlaceholder');
+    if (ph) ph.style.transform = `scale(${scale})`;
+  }
+}, { passive: false });
+
+imgWrap.addEventListener('touchend', () => {
+  const ph = imgWrap.querySelector('#popupImgPlaceholder');
+  if (ph) {
+    const match = ph.style.transform.match(/scale\((.+)\)/);
+    currentScale = match ? parseFloat(match[1]) : 1;
+    if (currentScale <= 1) { currentScale = 1; ph.style.transform = 'scale(1)'; }
+  }
+});
+</script>
+</body>
+</html>

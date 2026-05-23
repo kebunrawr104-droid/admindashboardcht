@@ -93,7 +93,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--off-white);color:var(-
 .page-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;}
 .topbar-right{display:flex;align-items:center;gap:20px;}
 
-/* Realtime clock */
 .clock-widget{
   display:flex;flex-direction:column;align-items:flex-end;
   padding:8px 16px;background:var(--orange-pale);border-radius:12px;
@@ -141,7 +140,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--off-white);color:var(-
 .stat-sub{font-size:11px;color:var(--gray);margin-top:4px;position:relative;z-index:1;}
 .stat-card.orange-card .stat-sub{color:rgba(255,255,255,.6);}
 
-/* ── SALES CHART AREA ── */
+/* ── SALES CHART ── */
 .sales-section{background:white;border-radius:20px;border:1px solid var(--border);padding:28px;margin-bottom:28px;}
 .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
 .section-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;}
@@ -164,8 +163,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--off-white);color:var(-
 }
 .bar:hover{background:var(--orange);}
 .bar-label{font-size:10px;font-weight:600;color:var(--gray);letter-spacing:1px;}
-.bar-val{font-size:9px;font-weight:700;color:var(--orange);display:none;}
-.bar:hover .bar-val{display:block;}
 
 /* ── SECTION CARD ── */
 .card{background:white;border-radius:20px;border:1px solid var(--border);padding:28px;margin-bottom:28px;}
@@ -239,40 +236,26 @@ tr:last-child td{border-bottom:none;}
 tbody tr{transition:background .15s;}
 tbody tr:hover{background:var(--off-white);}
 
-.prod-thumb{
-  width:48px;height:48px;border-radius:10px;object-fit:cover;
-  background:var(--gray-light);display:block;
-}
-.prod-thumb-placeholder{
-  width:48px;height:48px;border-radius:10px;
-  background:var(--orange-pale);display:flex;align-items:center;justify-content:center;
-  font-size:20px;
-}
+.prod-thumb{width:48px;height:48px;border-radius:10px;object-fit:cover;background:var(--gray-light);display:block;}
+.prod-thumb-placeholder{width:48px;height:48px;border-radius:10px;background:var(--orange-pale);display:flex;align-items:center;justify-content:center;font-size:20px;}
 .product-cell{display:flex;align-items:center;gap:12px;}
 .product-cell .pname{font-weight:700;font-size:13px;}
 .product-cell .pcat{font-size:11px;color:var(--gray);margin-top:2px;}
 
-.badge-pill{
-  display:inline-block;padding:4px 12px;border-radius:20px;
-  font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-}
+.badge-pill{display:inline-block;padding:4px 12px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
 .badge-new{background:#DBEAFE;color:#2563EB;}
 .badge-sale{background:#FEF9C3;color:#CA8A04;}
 .badge-hot{background:#FEE2E2;color:var(--danger);}
 .badge-limited{background:#F3E8FF;color:#9333EA;}
 .badge-none{background:var(--gray-light);color:var(--gray);}
 
-/* Order status badges */
 .status-pill{display:inline-block;padding:5px 14px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
 .status-new{background:#FFF7ED;color:#EA580C;}
 .status-process{background:#EFF6FF;color:#3B82F6;}
 .status-done{background:#F0FDF4;color:var(--success);}
 
 /* ── ORDERS ── */
-.order-card{
-  background:white;border:1.5px solid var(--border);border-radius:16px;
-  padding:20px;margin-bottom:16px;transition:box-shadow .2s;
-}
+.order-card{background:white;border:1.5px solid var(--border);border-radius:16px;padding:20px;margin-bottom:16px;transition:box-shadow .2s;}
 .order-card:hover{box-shadow:0 6px 20px rgba(255,107,0,.1);}
 .order-card.new-order{border-left:4px solid var(--orange);}
 .order-card.done-order{border-left:4px solid var(--success);opacity:.75;}
@@ -305,11 +288,7 @@ tbody tr:hover{background:var(--off-white);}
 @keyframes toastIn{from{transform:translateX(40px);opacity:0;}to{transform:translateX(0);opacity:1;}}
 
 /* ── MODAL ── */
-.modal-overlay{
-  display:none;position:fixed;inset:0;
-  background:rgba(0,0,0,.5);backdrop-filter:blur(4px);
-  z-index:1000;align-items:center;justify-content:center;padding:20px;
-}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);z-index:1000;align-items:center;justify-content:center;padding:20px;}
 .modal-overlay.open{display:flex;}
 .modal{background:white;border-radius:20px;padding:32px;max-width:420px;width:100%;animation:slideUp .3s ease;}
 @keyframes slideUp{from{transform:translateY(20px);opacity:0;}to{transform:translateY(0);opacity:1;}}
@@ -321,12 +300,7 @@ tbody tr:hover{background:var(--off-white);}
 .btn-confirm-del{background:var(--danger);color:white;border:none;padding:12px 24px;border-radius:20px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:1px;text-transform:uppercase;transition:.2s;}
 .btn-confirm-del:hover{background:#C01;}
 
-/* ── PASSWORD MODAL ── */
-.pass-input{
-  width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:12px;
-  font-family:'Montserrat',sans-serif;font-size:14px;outline:none;
-  transition:border-color .2s,box-shadow .2s;margin-bottom:4px;
-}
+.pass-input{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:12px;font-family:'Montserrat',sans-serif;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s;margin-bottom:4px;}
 .pass-input:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,107,0,.1);}
 
 /* ── MOBILE ── */
@@ -343,11 +317,7 @@ tbody tr:hover{background:var(--off-white);}
   .content{padding:20px 16px;}
   .topbar{padding:0 16px;}
 }
-@media(max-width:500px){
-  .stats-row{grid-template-columns:1fr;}
-}
-
-/* ── SCROLLBAR ── */
+@media(max-width:500px){.stats-row{grid-template-columns:1fr;}}
 ::-webkit-scrollbar{width:6px;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
@@ -355,34 +325,20 @@ tbody tr:hover{background:var(--off-white);}
 </head>
 <body>
 
-<!-- SIDEBAR OVERLAY -->
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-<!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-logo">
     <div class="brand">CHIT<span>A</span>TO</div>
     <div class="sub">Admin Dashboard</div>
   </div>
-
   <div class="nav-section">Menu</div>
-
   <nav>
-    <button class="nav-item active" data-page="overview">
-      <i class="fas fa-chart-pie"></i> Overview
-    </button>
-    <button class="nav-item" data-page="products">
-      <i class="fas fa-box-open"></i> Produk
-    </button>
-    <button class="nav-item" data-page="orders">
-      <i class="fas fa-shopping-bag"></i> Orderan Masuk
-      <span class="badge" id="orderBadge">0</span>
-    </button>
-    <button class="nav-item" data-page="history">
-      <i class="fas fa-history"></i> History Order
-    </button>
+    <button class="nav-item active" data-page="overview"><i class="fas fa-chart-pie"></i> Overview</button>
+    <button class="nav-item" data-page="products"><i class="fas fa-box-open"></i> Produk</button>
+    <button class="nav-item" data-page="orders"><i class="fas fa-shopping-bag"></i> Orderan Masuk<span class="badge" id="orderBadge">0</span></button>
+    <button class="nav-item" data-page="history"><i class="fas fa-history"></i> History Order</button>
   </nav>
-
   <div class="sidebar-bottom">
     <div class="sidebar-user">
       <div class="user-avatar">A</div>
@@ -394,15 +350,10 @@ tbody tr:hover{background:var(--off-white);}
   </div>
 </aside>
 
-<!-- MAIN -->
 <div class="main">
-
-  <!-- TOPBAR -->
   <div class="topbar">
     <div class="topbar-left">
-      <button class="hamburger-btn" id="hamburgerBtn">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="hamburger-btn" id="hamburgerBtn"><span></span><span></span><span></span></button>
       <div class="page-title" id="pageTitle">Overview</div>
     </div>
     <div class="topbar-right">
@@ -413,12 +364,10 @@ tbody tr:hover{background:var(--off-white);}
     </div>
   </div>
 
-  <!-- CONTENT -->
   <div class="content">
 
-    <!-- ══ PAGE: OVERVIEW ══ -->
+    <!-- OVERVIEW -->
     <div class="page active" id="page-overview">
-
       <div class="stats-row">
         <div class="stat-card orange-card">
           <div class="stat-icon">💰</div>
@@ -446,7 +395,6 @@ tbody tr:hover{background:var(--off-white);}
         </div>
       </div>
 
-      <!-- Sales Chart -->
       <div class="sales-section">
         <div class="section-head">
           <div>
@@ -458,7 +406,6 @@ tbody tr:hover{background:var(--off-white);}
         <div class="chart-bars" id="chartBars"></div>
       </div>
 
-      <!-- Recent Orders -->
       <div class="card">
         <div class="section-head">
           <div>
@@ -468,13 +415,10 @@ tbody tr:hover{background:var(--off-white);}
         </div>
         <div id="recentOrdersList"></div>
       </div>
+    </div>
 
-    </div><!-- /overview -->
-
-    <!-- ══ PAGE: PRODUCTS ══ -->
+    <!-- PRODUCTS -->
     <div class="page" id="page-products">
-
-      <!-- Form Tambah -->
       <div class="card">
         <div class="section-head">
           <div>
@@ -483,18 +427,9 @@ tbody tr:hover{background:var(--off-white);}
           </div>
         </div>
         <div class="form-grid">
-          <div class="field">
-            <label>Nama Produk *</label>
-            <input type="text" id="pName" placeholder="Contoh: Jaket Bomber Hitam">
-          </div>
-          <div class="field">
-            <label>Harga (Rp) *</label>
-            <input type="number" id="pPrice" placeholder="250000">
-          </div>
-          <div class="field">
-            <label>Harga Coret (opsional)</label>
-            <input type="number" id="pOldPrice" placeholder="300000">
-          </div>
+          <div class="field"><label>Nama Produk *</label><input type="text" id="pName" placeholder="Contoh: Jaket Bomber Hitam"></div>
+          <div class="field"><label>Harga (Rp) *</label><input type="number" id="pPrice" placeholder="250000"></div>
+          <div class="field"><label>Harga Coret (opsional)</label><input type="number" id="pOldPrice" placeholder="300000"></div>
           <div class="field">
             <label>Kategori *</label>
             <select id="pCat">
@@ -514,18 +449,9 @@ tbody tr:hover{background:var(--off-white);}
               <option value="Limited">Limited</option>
             </select>
           </div>
-          <div class="field">
-            <label>Icon Emoji (jika tanpa foto)</label>
-            <input type="text" id="pIcon" placeholder="👕">
-          </div>
-          <div class="field full">
-            <label>Link Gambar *</label>
-            <input type="text" id="pImage" placeholder="https://...">
-          </div>
-          <div class="field full">
-            <label>Deskripsi Produk</label>
-            <textarea id="pDesc" placeholder="Tulis deskripsi singkat..."></textarea>
-          </div>
+          <div class="field"><label>Icon Emoji (jika tanpa foto)</label><input type="text" id="pIcon" placeholder="👕"></div>
+          <div class="field full"><label>Link Gambar</label><input type="text" id="pImage" placeholder="https://..."></div>
+          <div class="field full"><label>Deskripsi Produk</label><textarea id="pDesc" placeholder="Tulis deskripsi singkat..."></textarea></div>
           <div class="field full">
             <label>Ukuran Tersedia</label>
             <div class="sizes-wrap">
@@ -538,12 +464,9 @@ tbody tr:hover{background:var(--off-white);}
             </div>
           </div>
         </div>
-        <button class="btn-orange" id="addProductBtn">
-          <i class="fas fa-plus"></i> Tambah Produk
-        </button>
+        <button class="btn-orange" id="addProductBtn"><i class="fas fa-plus"></i> Tambah Produk</button>
       </div>
 
-      <!-- Daftar Produk -->
       <div class="card">
         <div class="section-head">
           <div>
@@ -556,12 +479,7 @@ tbody tr:hover{background:var(--off-white);}
           <table>
             <thead>
               <tr>
-                <th>Produk</th>
-                <th>Kategori</th>
-                <th>Harga</th>
-                <th>Badge</th>
-                <th>Ukuran</th>
-                <th>Aksi</th>
+                <th>Produk</th><th>Kategori</th><th>Harga</th><th>Badge</th><th>Ukuran</th><th>Aksi</th>
               </tr>
             </thead>
             <tbody id="productsTableBody">
@@ -570,10 +488,9 @@ tbody tr:hover{background:var(--off-white);}
           </table>
         </div>
       </div>
+    </div>
 
-    </div><!-- /products -->
-
-    <!-- ══ PAGE: ORDERS ══ -->
+    <!-- ORDERS -->
     <div class="page" id="page-orders">
       <div class="card">
         <div class="section-head">
@@ -582,13 +499,11 @@ tbody tr:hover{background:var(--off-white);}
             <div class="section-title">ORDERAN MASUK</div>
           </div>
         </div>
-        <div id="ordersList">
-          <div class="empty-box"><div class="icon">🛍️</div><p>Belum ada order masuk</p></div>
-        </div>
+        <div id="ordersList"><div class="empty-box"><div class="icon">🛍️</div><p>Belum ada order masuk</p></div></div>
       </div>
     </div>
 
-    <!-- ══ PAGE: HISTORY ══ -->
+    <!-- HISTORY -->
     <div class="page" id="page-history">
       <div class="card">
         <div class="section-head">
@@ -597,16 +512,13 @@ tbody tr:hover{background:var(--off-white);}
             <div class="section-title">HISTORY ORDER</div>
           </div>
         </div>
-        <div id="historyList">
-          <div class="empty-box"><div class="icon">📋</div><p>Belum ada history</p></div>
-        </div>
+        <div id="historyList"><div class="empty-box"><div class="icon">📋</div><p>Belum ada history</p></div></div>
       </div>
     </div>
 
-  </div><!-- /content -->
-</div><!-- /main -->
+  </div>
+</div>
 
-<!-- TOAST CONTAINER -->
 <div class="toast-container" id="toastContainer"></div>
 
 <!-- DELETE MODAL -->
@@ -637,13 +549,13 @@ tbody tr:hover{background:var(--off-white);}
 
 <!-- FIREBASE -->
 <script type="module">
-import { initializeApp }
-  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
   getFirestore, collection, addDoc, deleteDoc,
-  doc, onSnapshot, updateDoc, query, orderBy, where
+  doc, onSnapshot, updateDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+// ── CONFIG (sama persis dengan webstore) ──
 const firebaseConfig = {
   apiKey: "AIzaSyB-fPBreIXMWsW4c_3Az9E83x3Kgz-SVSc",
   authDomain: "chitato-store.firebaseapp.com",
@@ -659,7 +571,6 @@ const db  = getFirestore(app);
 
 const ADMIN_PASS = "admin123";
 
-// ── FORMAT ──
 const rupiah = n => new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(n);
 const safeText = t => String(t||'').replace(/</g,"&lt;").replace(/>/g,"&gt;");
 const MONTHS = ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
@@ -668,12 +579,11 @@ const MONTHS_FULL = ["Januari","Februari","Maret","April","Mei","Juni","Juli","A
 // ── CLOCK ──
 function updateClock(){
   const now = new Date();
-  const hh  = String(now.getHours()).padStart(2,'0');
-  const mm  = String(now.getMinutes()).padStart(2,'0');
-  const ss  = String(now.getSeconds()).padStart(2,'0');
+  const hh = String(now.getHours()).padStart(2,'0');
+  const mm = String(now.getMinutes()).padStart(2,'0');
+  const ss = String(now.getSeconds()).padStart(2,'0');
   document.getElementById('clockTime').textContent = `${hh}:${mm}:${ss}`;
-  document.getElementById('clockDate').textContent =
-    `${now.getDate()} ${MONTHS_FULL[now.getMonth()]} ${now.getFullYear()}`;
+  document.getElementById('clockDate').textContent = `${now.getDate()} ${MONTHS_FULL[now.getMonth()]} ${now.getFullYear()}`;
 }
 setInterval(updateClock, 1000);
 updateClock();
@@ -692,7 +602,7 @@ let passResolve = null;
 function requirePassword(title='Konfirmasi Admin', desc='Masukkan password admin.'){
   return new Promise(resolve => {
     document.getElementById('passModalTitle').textContent = title;
-    document.getElementById('passModalDesc').textContent  = desc;
+    document.getElementById('passModalDesc').textContent = desc;
     document.getElementById('passInput').value = '';
     document.getElementById('passModal').classList.add('open');
     passResolve = resolve;
@@ -706,6 +616,9 @@ document.getElementById('confirmPass').addEventListener('click', () => {
 document.getElementById('cancelPass').addEventListener('click', () => {
   document.getElementById('passModal').classList.remove('open');
   if(passResolve){ passResolve(null); passResolve=null; }
+});
+document.getElementById('passInput').addEventListener('keydown', e => {
+  if(e.key === 'Enter') document.getElementById('confirmPass').click();
 });
 
 // ── DELETE MODAL ──
@@ -738,8 +651,6 @@ document.querySelectorAll('.nav-item[data-page]').forEach(btn => {
     document.getElementById('sidebarOverlay').classList.remove('open');
   });
 });
-
-// hamburger
 document.getElementById('hamburgerBtn').addEventListener('click', () => {
   document.getElementById('sidebar').classList.toggle('open');
   document.getElementById('sidebarOverlay').classList.toggle('open');
@@ -758,9 +669,10 @@ onSnapshot(collection(db,'products'), snap => {
   allProducts = {};
   snap.forEach(d => { allProducts[d.id] = d.data(); });
   renderProductsTable();
-  updateStats();
   document.getElementById('statProducts').textContent = snap.size;
   document.getElementById('productCount').textContent = snap.size + ' produk';
+}, err => {
+  toast('Gagal load produk: ' + err.message, 'error');
 });
 
 function renderProductsTable(){
@@ -777,21 +689,22 @@ function renderProductsTable(){
     const badgeClass = p.badge ? `badge-${(p.badge||'').toLowerCase()}` : 'badge-none';
     const badgeLabel = p.badge || '—';
     const sizes = (p.sizes||[]).join(', ') || '—';
+    const priceDisplay = typeof p.price === 'number' ? rupiah(p.price) : p.price;
+    const oldPriceDisplay = p.oldPrice ? (typeof p.oldPrice === 'number' ? rupiah(p.oldPrice) : p.oldPrice) : '';
     return `<tr>
       <td>
         <div class="product-cell">
           ${imgEl}
-          <div><div class="pname">${safeText(p.name)}</div><div class="pcat">${safeText(p.desc||'').substring(0,40)||'—'}</div></div>
+          <div><div class="pname">${safeText(p.name)}</div><div class="pcat">${safeText((p.desc||'').substring(0,40))||'—'}</div></div>
         </div>
       </td>
       <td>${safeText(p.cat||'—')}</td>
-      <td><b>${rupiah(p.price)}</b>${p.oldPrice?`<br><small style="color:#bbb;text-decoration:line-through">${rupiah(p.oldPrice)}</small>`:''}</td>
+      <td><b>${priceDisplay}</b>${oldPriceDisplay?`<br><small style="color:#bbb;text-decoration:line-through">${oldPriceDisplay}</small>`:''}</td>
       <td><span class="badge-pill ${badgeClass}">${badgeLabel}</span></td>
       <td style="font-size:12px;color:var(--gray)">${sizes}</td>
       <td><button class="btn-outline-danger" data-delid="${id}"><i class="fas fa-trash"></i> Hapus</button></td>
     </tr>`;
   }).join('');
-
   tbody.querySelectorAll('[data-delid]').forEach(btn => {
     btn.addEventListener('click', () => handleDeleteProduct(btn.dataset.delid));
   });
@@ -812,12 +725,17 @@ document.getElementById('addProductBtn').addEventListener('click', async () => {
   const desc     = document.getElementById('pDesc').value.trim();
   const sizes    = [...document.querySelectorAll('.sizes-wrap input:checked')].map(c=>c.value);
 
-  if(!name||!price||!cat){toast('Nama, Harga, dan Kategori wajib diisi!','error');return;}
+  if(!name||!price||!cat){ toast('Nama, Harga, dan Kategori wajib diisi!','error'); return; }
 
   const data = {
-    name, price:Number(price), image:image||'', cat,
+    name,
+    price: Number(price),
+    image: image || '',
+    cat,
     sizes: sizes.length ? sizes : ['S','M','L','XL'],
-    desc:desc||'', icon:icon||'👕', badge:badge||'',
+    desc: desc || '',
+    icon: icon || '👕',
+    badge: badge || '',
     createdAt: Date.now()
   };
   if(oldPrice) data.oldPrice = Number(oldPrice);
@@ -825,11 +743,10 @@ document.getElementById('addProductBtn').addEventListener('click', async () => {
   try{
     await addDoc(collection(db,'products'), data);
     toast('Produk berhasil ditambahkan! 🎉');
-    // reset
-    ['pName','pPrice','pOldPrice','pImage','pDesc','pIcon'].forEach(id=>document.getElementById(id).value='');
+    ['pName','pPrice','pOldPrice','pImage','pDesc','pIcon'].forEach(id => document.getElementById(id).value='');
     document.getElementById('pCat').value='';
     document.getElementById('pBadge').value='';
-    document.querySelectorAll('.sizes-wrap input').forEach(c=>c.checked=false);
+    document.querySelectorAll('.sizes-wrap input').forEach(c => c.checked=false);
   }catch(e){ toast('Gagal tambah produk: '+e.message,'error'); }
 });
 
@@ -849,7 +766,6 @@ async function handleDeleteProduct(id){
 onSnapshot(collection(db,'orders'), snap => {
   allOrders = [];
   snap.forEach(d => allOrders.push({id:d.id, ...d.data()}));
-  // sort by createdAt desc
   allOrders.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
 
   const pending = allOrders.filter(o=>o.status==='new').length;
@@ -861,6 +777,8 @@ onSnapshot(collection(db,'orders'), snap => {
   renderRecentOrders();
   updateStats();
   renderChart();
+}, err => {
+  toast('Gagal load orders: ' + err.message, 'error');
 });
 
 function timeAgo(ts){
@@ -875,9 +793,10 @@ function timeAgo(ts){
 }
 
 function orderCardHTML(o, showActions=true){
-  const statusMap = {new:'status-new',process:'status-process',done:'status-done'};
+  const statusMap   = {new:'status-new',process:'status-process',done:'status-done'};
   const statusLabel = {new:'Baru',process:'Diproses',done:'Selesai'};
   const cls = o.status==='new'?'new-order':o.status==='done'?'done-order':'';
+  const priceDisplay = o.price ? (typeof o.price === 'number' ? rupiah(o.price) : o.price) : '–';
   const actionsHTML = showActions && o.status!=='done' ? `
     <div class="order-actions">
       ${o.status==='new'?`<button class="btn-sm-orange" data-orderid="${o.id}" data-action="process"><i class="fas fa-cog"></i> Proses</button>`:''}
@@ -893,13 +812,13 @@ function orderCardHTML(o, showActions=true){
     </div>
     <div class="order-product">${safeText(o.product||'–')}</div>
     <div class="order-detail">
-      ${o.size?`Ukuran: <b>${safeText(o.size)}</b> &nbsp;·&nbsp;`:''} 
+      ${o.size?`Ukuran: <b>${safeText(o.size)}</b> &nbsp;·&nbsp;`:''}
       Customer: <b>${safeText(o.customer||'–')}</b>
       ${o.phone?` &nbsp;·&nbsp; WA: <b>${safeText(o.phone)}</b>`:''}
     </div>
     ${o.note?`<div class="order-detail" style="margin-top:6px">Catatan: ${safeText(o.note)}</div>`:''}
     <div class="order-footer">
-      <span class="order-price">${o.price?rupiah(o.price):'–'}</span>
+      <span class="order-price">${priceDisplay}</span>
       ${actionsHTML}
     </div>
   </div>`;
@@ -908,10 +827,7 @@ function orderCardHTML(o, showActions=true){
 function renderOrders(){
   const list = document.getElementById('ordersList');
   const active = allOrders.filter(o=>o.status!=='done');
-  if(!active.length){
-    list.innerHTML = `<div class="empty-box"><div class="icon">🛍️</div><p>Belum ada order masuk</p></div>`;
-    return;
-  }
+  if(!active.length){ list.innerHTML = `<div class="empty-box"><div class="icon">🛍️</div><p>Belum ada order masuk</p></div>`; return; }
   list.innerHTML = active.map(o=>orderCardHTML(o,true)).join('');
   attachOrderActions(list);
 }
@@ -919,20 +835,14 @@ function renderOrders(){
 function renderHistory(){
   const list = document.getElementById('historyList');
   const done = allOrders.filter(o=>o.status==='done');
-  if(!done.length){
-    list.innerHTML = `<div class="empty-box"><div class="icon">📋</div><p>Belum ada history</p></div>`;
-    return;
-  }
+  if(!done.length){ list.innerHTML = `<div class="empty-box"><div class="icon">📋</div><p>Belum ada history</p></div>`; return; }
   list.innerHTML = done.map(o=>orderCardHTML(o,false)).join('');
 }
 
 function renderRecentOrders(){
   const list = document.getElementById('recentOrdersList');
   const recent = allOrders.slice(0,5);
-  if(!recent.length){
-    list.innerHTML = `<div class="empty-box"><div class="icon">🛍️</div><p>Belum ada order</p></div>`;
-    return;
-  }
+  if(!recent.length){ list.innerHTML = `<div class="empty-box"><div class="icon">🛍️</div><p>Belum ada order</p></div>`; return; }
   list.innerHTML = recent.map(o=>orderCardHTML(o,true)).join('');
   attachOrderActions(list);
 }
@@ -946,29 +856,24 @@ function attachOrderActions(container){
 async function handleOrderAction(id, action){
   const pass = await requirePassword('Update Order','Masukkan password admin.');
   if(pass !== ADMIN_PASS){ toast('Password salah!','error'); return; }
-  const statusMap = {process:'process', done:'done'};
   try{
-    await updateDoc(doc(db,'orders',id),{status: statusMap[action], updatedAt: Date.now()});
+    await updateDoc(doc(db,'orders',id),{status: action, updatedAt: Date.now()});
     toast(action==='done' ? 'Order ditandai selesai ✅' : 'Order sedang diproses 🔄');
   }catch(e){ toast('Gagal update: '+e.message,'error'); }
 }
 
-// ── STATS & CHART ──
+// ── STATS ──
 function updateStats(){
   const now = new Date();
-  const y = now.getFullYear();
-  const m = now.getMonth();
-  const thisMonthOrders = allOrders.filter(o=>{
-    const d = new Date(o.createdAt||0);
-    return d.getFullYear()===y && d.getMonth()===m;
-  });
-  const revenue = thisMonthOrders.reduce((s,o)=>s+(o.price||0),0);
+  const y = now.getFullYear(), m = now.getMonth();
+  const thisMonth = allOrders.filter(o=>{ const d=new Date(o.createdAt||0); return d.getFullYear()===y && d.getMonth()===m; });
+  const revenue = thisMonth.reduce((s,o)=>s+(o.price||0),0);
   document.getElementById('statRevenue').textContent = rupiah(revenue);
   document.getElementById('statRevenueMonth').textContent = MONTHS_FULL[m]+' '+y;
-  document.getElementById('statOrders').textContent = thisMonthOrders.length;
+  document.getElementById('statOrders').textContent = thisMonth.length;
 }
 
-// Chart
+// ── CHART ──
 let selectedYear = new Date().getFullYear();
 
 function renderYearTabs(){
@@ -976,17 +881,10 @@ function renderYearTabs(){
   const curY = new Date().getFullYear();
   if(!years.includes(curY)) years.push(curY);
   years.sort((a,b)=>b-a);
-
   const tabs = document.getElementById('yearTabs');
-  tabs.innerHTML = years.map(y=>
-    `<button class="month-tab${y===selectedYear?' active':''}" data-year="${y}">${y}</button>`
-  ).join('');
-  tabs.querySelectorAll('.month-tab').forEach(b=>{
-    b.addEventListener('click',()=>{
-      selectedYear = Number(b.dataset.year);
-      renderYearTabs();
-      renderChart();
-    });
+  tabs.innerHTML = years.map(y => `<button class="month-tab${y===selectedYear?' active':''}" data-year="${y}">${y}</button>`).join('');
+  tabs.querySelectorAll('.month-tab').forEach(b => {
+    b.addEventListener('click', () => { selectedYear=Number(b.dataset.year); renderYearTabs(); renderChart(); });
   });
 }
 
@@ -998,22 +896,21 @@ function renderChart(){
     const d = new Date(o.createdAt||0);
     if(d.getFullYear()===selectedYear) monthly[d.getMonth()] += (o.price||0);
   });
-  const max = Math.max(...monthly,1);
-  bars.innerHTML = monthly.map((val,i)=>{
+  const max = Math.max(...monthly, 1);
+  const curM = new Date().getMonth();
+  bars.innerHTML = monthly.map((val,i) => {
     const pct = Math.round((val/max)*100);
+    const isCurrentMonth = i===curM && selectedYear===new Date().getFullYear();
     return `<div class="bar-wrap">
-      <div class="bar" style="height:${Math.max(pct,4)}%;background:${i===new Date().getMonth()&&selectedYear===new Date().getFullYear()?'var(--orange)':'var(--orange-pale)'}">
-        <span class="bar-val" style="position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--orange);white-space:nowrap;">${val?rupiah(val):''}</span>
+      <div class="bar" style="height:${Math.max(pct,4)}%;background:${isCurrentMonth?'var(--orange)':'var(--orange-pale)'};" title="${MONTHS_FULL[i]}: ${val?rupiah(val):'Rp 0'}">
       </div>
       <div class="bar-label">${MONTHS[i]}</div>
     </div>`;
   }).join('');
 }
 
-// initial render
 renderYearTabs();
 renderChart();
-
 </script>
 </body>
 </html>
